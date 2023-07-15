@@ -19,12 +19,11 @@ const connect = function () {
     // setInterval(() => {
     //   conn.write("Move: up");
     // }, 1000);
-    
+
   });
 
   return conn;
 };
-connect();
 
 module.exports = {
   connect
