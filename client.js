@@ -15,6 +15,11 @@ const connect = function () {
     // code that does something when the connection is first established
     console.log("Successfully connected to game server");
     console.log('Name: EUS');
+
+    // setInterval(() => {
+    //   conn.write("Move: up");
+    // }, 1000);
+    
   });
 
   return conn;
