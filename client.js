@@ -1,3 +1,4 @@
+const { log } = require("console");
 const net = require("net");
 
 // establishes a connection with the game server
@@ -12,7 +13,8 @@ const connect = function () {
 
   conn.on("connect", () => {
     // code that does something when the connection is first established
-    console.log("Connected successfully");
+    console.log("Successfully connected to game server");
+    console.log('Name: EUS');
   });
 
   return conn;
