@@ -1,6 +1,11 @@
+// Import the command line object from constants file
+const { cmdLineObject } = require('./constants');
+
+// Stores the active TCP connection object.
 let connection;
 
-const setupInput = function (conn) {
+// setup interface to handle user input from standard keyboard input (stdin)
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -10,23 +15,17 @@ const setupInput = function (conn) {
   return stdin;
 };
 
-const handleUserInput = function (key) { 
+// Callback function to setupInput that accepts keyboard input from client
+const handleUserInput = function(key) {
   // bind movement commands to W A S D keys and send commands to game server
-  if (key === "w") {
-    connection.write("Move: up");
-  } else if (key === "a") {
-    connection.write("Move: left");
-  } else if (key === "s") {
-    connection.write("Move: down");
-  } else if (key === "d") {
-    connection.write("Move: right");
-  } else if (key === "\u0003") {// terminate the game with ctrl+c
+  if (cmdLineObject[key]) {
+    connection.write(cmdLineObject[key]);
+  }
+  
+  /// Terminate the game with ctrl+c
+  if (key === "\u0003") {
     console.log("Game terminated!");
     process.exit();
-  }
-
-  if (key === "t") {
-    connection.write("Say: Hey mehn!");
   }
 };
 
