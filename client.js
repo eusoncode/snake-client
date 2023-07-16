@@ -1,28 +1,32 @@
+// Import required functions
 const net = require("net");
-const { IP, PORT } = require("./constants");
+const { IP, PORT, playerName } = require("./constants");
 
-// establishes a connection with the game server
-const connect = function () {
+// Establishes a connection with the game server
+const connect = function() {
   const conn = net.createConnection({
-    host: IP, // IP address here,
-    port: PORT,// PORT number here,
+    host: IP,
+    port: PORT,
   });
 
-  // interpret incoming data as text
+  // Interpret incoming data as text
   conn.setEncoding("utf8");
 
+  // Events that will occur upon connection
   conn.on("connect", () => {
-    // code that does something when the connection is first established
+    // Prints user name on the game logs a successfully connection
     console.log("Successfully connected to game server");
-    conn.write('Name: EUS');
+    conn.write(`Name: ${playerName}`);
 
-    // setInterval(() => {
-    //   conn.write("Move: up");
-    // }, 1000);
-
+    // The game server timeout when idle for 10 sec
+    conn.setTimeout(10000);
+    conn.on('timeout', () => {
+      console.log('you ded cuz you idled');
+      conn.end();
+      console.log("start all over");
+      process.exit();
+    });
   });
-  
-  conn.write("Say: Hi")
 
   return conn;
 };
