@@ -10,7 +10,7 @@ const setupInput = function (conn) {
   return stdin;
 };
 
-const handleUserInput = function (key) {
+const handleUserInput = function (key) { 
   // bind movement commands to W A S D keys and send commands to game server
   if (key === "w") {
     connection.write("Move: up");
@@ -23,6 +23,10 @@ const handleUserInput = function (key) {
   } else if (key === "\u0003") {// terminate the game with ctrl+c
     console.log("Game terminated!");
     process.exit();
+  }
+
+  if (key === "t") {
+    connection.write("Say: Hey mehn!");
   }
 };
 
