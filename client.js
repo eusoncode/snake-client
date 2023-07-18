@@ -19,7 +19,7 @@ const connect = function() {
 
   // Events that will occur upon connection
   conn.on("connect", () => {
-    console.log("Successfully connected to game server");
+    console.log("Successfully connected to game server.");
     conn.write(`Name: ${playerName}`);
   });
 
