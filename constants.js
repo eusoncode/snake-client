@@ -7,7 +7,7 @@ const cmdLineObject = {
   "a": "Move: left",
   "s": "Move: down",
   "d": "Move: right",
-  "t": 'Say: Hey Player2'
+  "t": "Say: Hey Player2"
 };
 
 module.exports = {
