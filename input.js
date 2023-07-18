@@ -17,6 +17,7 @@ const setupInput = function(conn) {
 
 // Callback function to setupInput that accepts keyboard input from client
 const handleUserInput = function(key) {
+  
   // bind movement commands to W A S D keys and send commands to game server
   if (cmdLineObject[key]) {
     connection.write(cmdLineObject[key]);
